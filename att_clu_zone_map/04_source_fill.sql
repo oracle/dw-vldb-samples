@@ -115,7 +115,7 @@ PROMPT Fill the SALES_SOURCE table with data for 2000 and 2009
 PROMPT This may take several minutes...
 --
 
-EXECUTE filltab(to_date('01-JAN-2000','DD-MON-YYYY'),500000,364);
+EXECUTE filltab(to_date('01-JAN-2000','DD-MON-YYYY'),1452090,364);
 EXECUTE filltab(to_date('01-JAN-2009','DD-MON-YYYY'),500000,364);
 
 --

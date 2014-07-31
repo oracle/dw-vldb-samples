@@ -24,7 +24,7 @@ In contrast to traditional clustering methods, attribute clusters have the capab
 <h3>Prerequisites</h3>
 
 - Have access to Oracle Database 12c with a sample ORCL database, the SYS user with SYSDBA privilege and OS authentication (so that you can execute the sqlplus / as sysdba command.)
-- This example uses the USERS tablespace, included in Oracle  Database 12c. To demonstrate these features adequately, reasonably large tables are required so approximately 400MB is required in the USERS tablespace.
+- This example uses the USERS tablespace, included in Oracle  Database 12c. To demonstrate these features adequately, reasonably large tables are required so approximately 1GB is required in the USERS tablespace.
 - Have downloaded and unzipped the 12c_aczm.zip file (which is in the files subdirectory of this tutorial) into a working directory.
 - Navigate to your working directory and execute all files from that location.
 - Execute the tutorial setup which creates the aczm12c user.
@@ -36,6 +36,8 @@ In contrast to traditional clustering methods, attribute clusters have the capab
 - You can also re-execute the tutorial setup from step number one (01_setup12c.sql): it will drop the aczm12c user and all its objects and then recreates it.
 
 <h3>Tutorial Overview</h3>
+
+Note that the generated data used in the tutorial is pseudo-random so your query results will not match the example output exactly. A 16K block size was when creating the sample output so the database statistic values you see will reflect differences in proportion the block size you are using.
 
 - Create a SALES_SOURCE fact (this is used as a source of data for the fact tables created later in this tutorial).
 - Create two dimension tables: PRODUCTS and LOCATIONS. 

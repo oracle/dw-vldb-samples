@@ -108,38 +108,4 @@ DROP INDEX sales_loc_i
 DROP INDEX sales_ac_loc_i
 /
 
-PROMPT Compression can benefit from sorted/clustered row data 
-
-ALTER TABLE sales COMPRESS BASIC
-/
-ALTER TABLE sales_ac COMPRESS BASIC
-/
-ALTER TABLE sales MOVE
-/
-ALTER TABLE sales_ac MOVE
-/
-
-PROMPT Compare the resulting segment sizes
-
-SELECT segment_name, bytes
-FROM   user_segments
-WHERE  segment_name IN ('SALES','SALES_AC')
-/
-
-PROMPT Clean Up
-
-ALTER TABLE sales NOCOMPRESS
-/
-ALTER TABLE sales_ac NOCOMPRESS
-/
-ALTER TABLE sales MOVE
-/
-ALTER TABLE sales_ac MOVE
-/
-
-SELECT segment_name, bytes
-FROM   user_segments
-WHERE  segment_name IN ('SALES','SALES_AC')
-/
-
 
