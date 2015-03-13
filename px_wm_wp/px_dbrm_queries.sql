@@ -1,3 +1,14 @@
+--
+-- DISCLAIMER:
+-- This script is provided for educational purposes only. It is 
+-- NOT supported by Oracle World Wide Technical Support.
+-- The script has been tested and appears to work as intended.
+-- You should always run new scripts initially 
+-- on a test instance.
+--
+-- Script Vesion 0.1 - TEST
+--
+--
 select name AS "Consumer Group"
       ,ROUND(DECODE(sum(PQS_COMPLETED),0,0,
              sum(PQ_QUEUED_TIME)/1000/sum(PQS_COMPLETED)),2) 
