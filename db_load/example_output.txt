@@ -1,0 +1,264 @@
+The client connection is transatlantic - so optimizing network roundtrips 
+makes a significant difference in this example run.
+
+
+Debugger connected to local process.
+****                                                                   ****
+****                                                                   ****
+**** Always run tests multiple times to allow the database statistics  ****
+**** reported here to settle to nominal values.                        ****
+****                                                                   ****
+**** Remember: elapsed times can mislead                               ****
+****         : Focus on reducing parse counts, executions, rountrips   ****
+****         : and transaction rates                                   ****
+****                                                                   ****
+****                                                                   ****
+****           Inserting 10 rows per test
+****                                                                   ****
+Connecting...
+Connected
+    Do nothing to get baseline statistics...
+
+Elapsed time = 0 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+            SQL*Net roundtrips to/from client          3
+       bytes received via SQL*Net from client       1493
+             bytes sent via SQL*Net to client       2462
+         bytes via SQL*Net vector from client          0
+           bytes via SQL*Net vector to client          0
+                                execute count          8
+                           parse count (hard)          0
+                          parse count (total)          9
+                                 user commits          0
+
+Connecting...
+Connected
+    Insert fixed values into table using literals, parsing once, committing every row manually.
+    PARSE INSERT INTO table VALUES ('XXXX')
+    LOOP
+       EXECUTE INSERT
+       COMMIT
+    END LOOP
+
+Elapsed time = 3328 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          23    + 20
+       bytes received via SQL*Net from client        2578    + 1085
+             bytes sent via SQL*Net to client        3472    + 1010
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          18    + 10
+                           parse count (hard)           0    + 0
+                          parse count (total)          10    + 1
+                                 user commits          10    + 10
+
+Connecting...
+Connected
+    Insert fixed values into table using literals, parsing once, auto committing every row.
+    PARSE INSERT INTO table VALUES ('XXXX')
+    LOOP
+       EXECUTE INSERT AND COMMIT
+    END LOOP
+
+Elapsed time = 1671 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          13    + 10
+       bytes received via SQL*Net from client        2556    + 1063
+             bytes sent via SQL*Net to client        3332    + 870
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          18    + 10
+                           parse count (hard)           0    + 0
+                          parse count (total)          10    + 1
+                                 user commits          10    + 10
+
+Connecting...
+Connected
+    Insert fixed values into table using literals, parsing once, committing once all rows have been inserted.
+    PARSE INSERT INTO table VALUES ('XXXX')
+    LOOP
+       EXECUTE INSERT
+    END LOOP
+    COMMIT
+
+Elapsed time = 1836 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          14    + 11
+       bytes received via SQL*Net from client        2559    + 1066
+             bytes sent via SQL*Net to client        3346    + 884
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          18    + 10
+                           parse count (hard)           0    + 0
+                          parse count (total)          10    + 1
+                                 user commits           1    + 1
+
+Connecting...
+Connected
+    Insert fixed values into table using literals, parsing before each execute, committing once all rows have been inserted.
+    LOOP
+       PARSE INSERT INTO table VALUES ('XXXX')
+       EXECUTE INSERT
+    END LOOP
+    COMMIT
+
+Elapsed time = 1829 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          14    + 11
+       bytes received via SQL*Net from client        3297    + 1804
+             bytes sent via SQL*Net to client        3346    + 884
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          18    + 10
+                           parse count (hard)           0    + 0
+                          parse count (total)          19    + 10
+                                 user commits           1    + 1
+
+Connecting...
+Connected
+    Insert different values into table using literals, parsing before each execute, committing once all rows have been inserted.
+    LOOP
+       STRING_VALUE = RANDOM_STRING()
+       PARSE INSERT INTO table VALUES (' || STRING_VALUE || ')
+       EXECUTE INSERT
+    END LOOP
+    COMMIT
+
+Elapsed time = 1842 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          14    + 11
+       bytes received via SQL*Net from client        3297    + 1804
+             bytes sent via SQL*Net to client        3356    + 894
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          28    + 20
+                           parse count (hard)          10    + 10
+                          parse count (total)          29    + 20
+                                 user commits           1    + 1
+
+Connecting...
+Connected
+    Insert different values into table using bind variables (parameters), parsing before each execute, committing once all rows have been inserted.
+    LOOP
+       STRING_VALUE = RANDOM_STRING()
+       PARSE INSERT INTO table VALUES (?)
+       SET PARAMETER = STRING_VALUE
+       EXECUTE INSERT
+    END LOOP
+    COMMIT
+
+Elapsed time = 1832 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          14    + 11
+       bytes received via SQL*Net from client        3657    + 2164
+             bytes sent via SQL*Net to client        3346    + 884
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          18    + 10
+                           parse count (hard)           0    + 0
+                          parse count (total)          19    + 10
+                                 user commits           1    + 1
+
+Connecting...
+Connected
+    Insert different values into table using bind variables (parameters), parsing before each execute but with statement cache, committing once all rows have been inserted.
+    LOOP
+       STRING_VALUE = RANDOM_STRING()
+       PARSE INSERT INTO table VALUES (?)
+       SET PARAMETER = STRING_VALUE
+       EXECUTE INSERT
+    END LOOP
+    COMMIT
+
+Elapsed time = 1832 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          14    + 11
+       bytes received via SQL*Net from client        2982    + 1489
+             bytes sent via SQL*Net to client        3346    + 884
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          18    + 10
+                           parse count (hard)           0    + 0
+                          parse count (total)          10    + 1
+                                 user commits           1    + 1
+
+Connecting...
+Connected
+    Insert different values into table using bind variables (parameters), parsing once, committing once all rows have been inserted.
+    PARSE INSERT INTO table VALUES (?)
+    LOOP
+       STRING_VALUE = RANDOM_STRING()
+       SET PARAMETER = STRING_VALUE
+       EXECUTE INSERT
+    END LOOP
+    COMMIT
+
+Elapsed time = 1825 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client          14    + 11
+       bytes received via SQL*Net from client        2982    + 1489
+             bytes sent via SQL*Net to client        3346    + 884
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count          18    + 10
+                           parse count (hard)           0    + 0
+                          parse count (total)          10    + 1
+                                 user commits           1    + 1
+
+Connecting...
+Connected
+    Insert different values into table using bind variables (parameters), parsing once, inserting rows in batches of 50, committing in batches of 100000.
+    PARSE INSERT INTO table VALUES (?)
+    LOOP
+       LOOP BATCH SIZE
+          STRING_VALUE = RANDOM_STRING()
+          SET PARAMETER[N] = STRING_VALUE
+       END LOOP
+       EXECUTE BATCH INSERT N
+       COMMIT EVENT Mth ROW
+    END LOOP
+
+Elapsed time = 334 miliseconds
+
+SELECT name,value FROM v$mystat, v$statname...
+
+                                                             + baseline comparison
+            SQL*Net roundtrips to/from client           5    + 2
+       bytes received via SQL*Net from client        2100    + 607
+             bytes sent via SQL*Net to client        2581    + 119
+         bytes via SQL*Net vector from client           0    + 0
+           bytes via SQL*Net vector to client           0    + 0
+                                execute count           9    + 1
+                           parse count (hard)           0    + 0
+                          parse count (total)          10    + 1
+                                 user commits           1    + 1
+
+Process exited.
+Debugger disconnected from local process.
+
