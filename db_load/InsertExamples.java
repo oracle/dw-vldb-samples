@@ -62,7 +62,6 @@ public class InsertExamples {
             connection.prepareStatement("select name,value from v$mystat m, v$statname n where m.statistic# = n.statistic# " +
                                         "and name in ('parse count (hard)','parse count (total)','user commits','execute count'," +
                                         "'bytes received via SQL*Net from client','bytes sent via SQL*Net to client'," +
-                                        "'bytes via SQL*Net vector from client','bytes via SQL*Net vector to client'," +
                                         "'SQL*Net roundtrips to/from client') " + " order by name");
         ResultSet rs = s.executeQuery();
         message("");

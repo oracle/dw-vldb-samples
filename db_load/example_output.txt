@@ -1,8 +1,6 @@
 The client connection is transatlantic - so optimizing network roundtrips 
 makes a significant difference in this example run.
 
-
-Debugger connected to local process.
 ****                                                                   ****
 ****                                                                   ****
 **** Always run tests multiple times to allow the database statistics  ****
@@ -24,10 +22,8 @@ Elapsed time = 0 miliseconds
 SELECT name,value FROM v$mystat, v$statname...
 
             SQL*Net roundtrips to/from client          3
-       bytes received via SQL*Net from client       1493
+       bytes received via SQL*Net from client       1417
              bytes sent via SQL*Net to client       2462
-         bytes via SQL*Net vector from client          0
-           bytes via SQL*Net vector to client          0
                                 execute count          8
                            parse count (hard)          0
                           parse count (total)          9
@@ -42,16 +38,14 @@ Connected
        COMMIT
     END LOOP
 
-Elapsed time = 3328 miliseconds
+Elapsed time = 3523 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          23    + 20
-       bytes received via SQL*Net from client        2578    + 1085
-             bytes sent via SQL*Net to client        3472    + 1010
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
+       bytes received via SQL*Net from client        2502    + 1085
+             bytes sent via SQL*Net to client        3471    + 1009
                                 execute count          18    + 10
                            parse count (hard)           0    + 0
                           parse count (total)          10    + 1
@@ -65,16 +59,14 @@ Connected
        EXECUTE INSERT AND COMMIT
     END LOOP
 
-Elapsed time = 1671 miliseconds
+Elapsed time = 2144 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          13    + 10
-       bytes received via SQL*Net from client        2556    + 1063
+       bytes received via SQL*Net from client        2480    + 1063
              bytes sent via SQL*Net to client        3332    + 870
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
                                 execute count          18    + 10
                            parse count (hard)           0    + 0
                           parse count (total)          10    + 1
@@ -89,16 +81,14 @@ Connected
     END LOOP
     COMMIT
 
-Elapsed time = 1836 miliseconds
+Elapsed time = 1934 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          14    + 11
-       bytes received via SQL*Net from client        2559    + 1066
+       bytes received via SQL*Net from client        2483    + 1066
              bytes sent via SQL*Net to client        3346    + 884
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
                                 execute count          18    + 10
                            parse count (hard)           0    + 0
                           parse count (total)          10    + 1
@@ -113,16 +103,14 @@ Connected
     END LOOP
     COMMIT
 
-Elapsed time = 1829 miliseconds
+Elapsed time = 1945 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          14    + 11
-       bytes received via SQL*Net from client        3297    + 1804
-             bytes sent via SQL*Net to client        3346    + 884
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
+       bytes received via SQL*Net from client        3221    + 1804
+             bytes sent via SQL*Net to client        3345    + 883
                                 execute count          18    + 10
                            parse count (hard)           0    + 0
                           parse count (total)          19    + 10
@@ -138,16 +126,14 @@ Connected
     END LOOP
     COMMIT
 
-Elapsed time = 1842 miliseconds
+Elapsed time = 1950 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          14    + 11
-       bytes received via SQL*Net from client        3297    + 1804
+       bytes received via SQL*Net from client        3221    + 1804
              bytes sent via SQL*Net to client        3356    + 894
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
                                 execute count          28    + 20
                            parse count (hard)          10    + 10
                           parse count (total)          29    + 20
@@ -164,16 +150,14 @@ Connected
     END LOOP
     COMMIT
 
-Elapsed time = 1832 miliseconds
+Elapsed time = 1947 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          14    + 11
-       bytes received via SQL*Net from client        3657    + 2164
+       bytes received via SQL*Net from client        3581    + 2164
              bytes sent via SQL*Net to client        3346    + 884
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
                                 execute count          18    + 10
                            parse count (hard)           0    + 0
                           parse count (total)          19    + 10
@@ -190,16 +174,14 @@ Connected
     END LOOP
     COMMIT
 
-Elapsed time = 1832 miliseconds
+Elapsed time = 1954 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          14    + 11
-       bytes received via SQL*Net from client        2982    + 1489
-             bytes sent via SQL*Net to client        3346    + 884
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
+       bytes received via SQL*Net from client        2906    + 1489
+             bytes sent via SQL*Net to client        3345    + 883
                                 execute count          18    + 10
                            parse count (hard)           0    + 0
                           parse count (total)          10    + 1
@@ -216,16 +198,14 @@ Connected
     END LOOP
     COMMIT
 
-Elapsed time = 1825 miliseconds
+Elapsed time = 1950 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client          14    + 11
-       bytes received via SQL*Net from client        2982    + 1489
+       bytes received via SQL*Net from client        2906    + 1489
              bytes sent via SQL*Net to client        3346    + 884
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
                                 execute count          18    + 10
                            parse count (hard)           0    + 0
                           parse count (total)          10    + 1
@@ -244,16 +224,14 @@ Connected
        COMMIT EVENT Mth ROW
     END LOOP
 
-Elapsed time = 334 miliseconds
+Elapsed time = 354 miliseconds
 
 SELECT name,value FROM v$mystat, v$statname...
 
                                                              + baseline comparison
             SQL*Net roundtrips to/from client           5    + 2
-       bytes received via SQL*Net from client        2100    + 607
+       bytes received via SQL*Net from client        2024    + 607
              bytes sent via SQL*Net to client        2581    + 119
-         bytes via SQL*Net vector from client           0    + 0
-           bytes via SQL*Net vector to client           0    + 0
                                 execute count           9    + 1
                            parse count (hard)           0    + 0
                           parse count (total)          10    + 1
