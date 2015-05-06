@@ -22,7 +22,7 @@ public class InsertExamples {
     private String driver = "oracle.jdbc.OracleDriver";
     private long startTime = 0;
     private final int rowCount = 10;
-    private HashMap doNothingStats = new HashMap();
+    private HashMap<String,Integer> doNothingStats = new HashMap<>();
 
     private void timeInit() {
         startTime = (new Date()).getTime();
@@ -481,4 +481,3 @@ public class InsertExamples {
         ex.close();
     }
 }
-
