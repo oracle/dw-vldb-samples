@@ -6,4 +6,4 @@ Some examples for loading data efficiently into an Oracle database. Note that th
 
 The Java was tested on JDK 7 and Oracle Database 12.1.0.2, but it will work without issue on Oracle 11gR2 too. To compile it, your project will need to include the Oracle JDBC client libraries.
 
-The Python example requires <a href="http://cx-oracle.sourceforge.net/">cx_Oracle</a>, which in turn depends an Oracle client installation (for example, the <a href="http://www.oracle.com/technetwork/database/features/instant-client/index.html">basic instant client and SDK).</a>
+The Python example requires <a href="http://cx-oracle.sourceforge.net/">cx_Oracle</a>, which in turn depends an Oracle client installation (for example, the <a href="http://www.oracle.com/technetwork/database/features/instant-client/index.html">basic instant client plus the SDK).</a>
