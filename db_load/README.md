@@ -1,6 +1,6 @@
 <h2>Data Loading Examples</h2>
 
-Some examples of loading data into an Oracle database, and note that the Java code includes examples of both good and (very!) bad practice. For full details, and the background behind the examples, check out the <a href="https://www.youtube.com/watch?v=Tr2DC-1W0i8&feature=youtu.be">Youtube web seminar.</a>. The seminar will explain how you can ensure that your data load code will enable your application to scale as your data volumes and load rates increase.
+Some examples of loading data into an Oracle database, and note that the Java code includes examples of both good and (very!) bad practice. For full details, and the background behind the examples, check out the <a href="https://www.youtube.com/watch?v=Tr2DC-1W0i8&feature=youtu.be">Youtube web seminar</a>. It explains how you can help to ensure that your code will enable your application to scale out as your data volume and load rate increases.
 
 The Java was tested on JDK 7 and Oracle Database 12.1.0.2, but it will work without issue on Oracle 11gR2 too. To compile it, your project will need to include the Oracle JDBC client libraries.
 
