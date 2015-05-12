@@ -8,11 +8,14 @@ The 12c directory contains a comprehensive set of examples demonstrating how the
 
 Each SQL script has an associated LST file so you can see an example of the output without having to run them.
 
+The scripts need to run in a TEST fsOracle database account with priviledges to create tables. Ideally, use
+the default USERS tablespace but note that the script outputs are sensitive to your tablespace and database storage characteristics, so your output may differ from the examples given.
+
 DISCLAIMER:
-   -- These scripts are provided for educational purposes only. It is
-   -- NOT supported by Oracle World Wide Technical Support.
-   -- The scripts have been tested and they appear to work as intended.
-   -- You should always run scripts on a test instance.
-   -- Note that they will DROP tables when they are executed.
+   <br/>-- These scripts are provided for educational purposes only. 
+   <br/>-- They are NOT supported by Oracle World Wide Technical Support.
+   <br/>-- The scripts have been tested and they appear to work as intended.
+   <br/>-- You should always run scripts on a test instance.
+   <br/>-- Note that they will DROP tables when they are executed.
 
 
