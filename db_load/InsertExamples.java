@@ -326,6 +326,18 @@ public class InsertExamples {
         message2("END LOOP");
         timeInit();
 
+        /* You'll get the most significant benefits setting batchInsertSize to
+         * something between 10 and 100. Beyond that, you may see diminishing returns
+         * especially for local clients and fast networks. Setting it to 1000's is
+         * usually not appropriate.
+         * 
+         * The value of batchCommitSize can really be anything! If you encounter a 
+         * failure and can pick up where you left off, you may set it to something like
+         * 10000 or a 1000000 perhaps. If you need to insert a large batch on an
+         * all or nothing basis, then you may choose to commit once, when all of the
+         * rows have been inserted
+         * /
+
         connection.setAutoCommit(false);
         /*
         Caching is not required in this example, but it is useful in more general examples.
