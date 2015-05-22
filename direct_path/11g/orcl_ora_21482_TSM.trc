@@ -1,4 +1,4 @@
-Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_ora_16156_TSM.trc
+Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_ora_21482_TSM.trc
 Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production
 With the Partitioning, OLAP, Data Mining and Real Application Testing options
 ORACLE_HOME = /u01/app/oracle/product/11.2.0/dbhome_2
@@ -9,30 +9,30 @@ Version:	#1 SMP Tue Oct 14 01:47:47 PDT 2014
 Machine:	x86_64
 Instance name: orcl
 Redo thread mounted by this instance: 1
-Oracle process number: 49
-Unix process pid: 16156, image: oracle@host11g (TNS V1-V3)
+Oracle process number: 22
+Unix process pid: 21482, image: oracle@host11g (TNS V1-V3)
 
 
-*** 2015-05-12 11:32:25.885
-*** SESSION ID:(58.425) 2015-05-12 11:32:25.885
-*** CLIENT ID:() 2015-05-12 11:32:25.885
-*** SERVICE NAME:(SYS$USERS) 2015-05-12 11:32:25.885
-*** MODULE NAME:(SQL*Plus) 2015-05-12 11:32:25.885
-*** ACTION NAME:() 2015-05-12 11:32:25.885
+*** 2015-05-22 10:56:35.926
+*** SESSION ID:(30.1179) 2015-05-22 10:56:35.926
+*** CLIENT ID:() 2015-05-22 10:56:35.926
+*** SERVICE NAME:(SYS$USERS) 2015-05-22 10:56:35.926
+*** MODULE NAME:(SQL*Plus) 2015-05-22 10:56:35.926
+*** ACTION NAME:() 2015-05-22 10:56:35.926
  
-Registered qb: INS$1 0x68082820 (PARSER)
+Registered qb: INS$1 0x2622820 (PARSER)
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
   signature (): qb_name=INS$1 nbfros=1 flg=0
-    fro(0): flg=4 objn=89407 hint_alias="T1"@"INS$1"
+    fro(0): flg=4 objn=89450 hint_alias="T1"@"INS$1"
 
-Registered qb: SEL$1 0x680849a8 (PARSER)
+Registered qb: SEL$1 0x26249a8 (PARSER)
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
   signature (): qb_name=SEL$1 nbfros=1 flg=0
-    fro(0): flg=4 objn=89406 hint_alias="T2"@"SEL$1"
+    fro(0): flg=4 objn=89449 hint_alias="T2"@"SEL$1"
 
 SPM: statement not found in SMB
 
@@ -48,9 +48,9 @@ Predicate Move-Around (PM)
 OPTIMIZER INFORMATION
 
 ******************************************
------ Current SQL Statement for this session (sql_id=fja7zr35gd9gp) -----
+----- Current SQL Statement for this session (sql_id=88s989mas4aa7) -----
 insert /*+ APPEND PARALLEL(t1,8) */ into sales_copy t1
-select  /*+ PARALLEL(t2,8) */ * from sales t2
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
 *******************************************
 Legend
 The following abbreviations are used by optimizer trace.
@@ -113,7 +113,6 @@ PARAMETERS USED BY THE OPTIMIZER
   PARAMETERS WITH ALTERED VALUES
   ******************************
 Compilation Environment Dump
-_smm_min_size                       = 475 KB
 parallel_dml_mode                   = enabled
 parallel_query_default_dop          = 2
 Bug Fix Control Environment
@@ -146,13 +145,14 @@ _sort_multiblock_read_count         = 2
 _hash_multiblock_io_count           = 0
 _db_file_optimizer_read_count       = 8
 _optimizer_max_permutations         = 2000
-pga_aggregate_target                = 524288 KB
+pga_aggregate_target                = 475136 KB
 _pga_max_size                       = 204800 KB
 _query_rewrite_maxdisjunct          = 257
 _smm_auto_min_io_size               = 56 KB
 _smm_auto_max_io_size               = 248 KB
-_smm_max_size_static                = 102400 KB
-_smm_px_max_size_static             = 262144 KB
+_smm_min_size                       = 475 KB
+_smm_max_size_static                = 95027 KB
+_smm_px_max_size_static             = 237568 KB
 _cpu_to_io                          = 0
 _optimizer_undo_cost_change         = 11.2.0.4
 parallel_query_mode                 = enabled
@@ -1320,7 +1320,7 @@ ST: not valid since star transformation parameter is FALSE
 TE: Checking validity of table expansion for query block INS$1 (#0)
 TE: Bypassed: Top query block of a DML.
 CBQT bypassed for query block INS$1 (#0): no complex view, sub-queries or UNION (ALL) queries.
-CBQT: Validity checks failed for fja7zr35gd9gp.
+CBQT: Validity checks failed for 88s989mas4aa7.
 CSE: Considering common sub-expression elimination in query block SEL$1 (#0)
 *************************
 Common Subexpression elimination (CSE)
@@ -1353,7 +1353,7 @@ ST: not valid since star transformation parameter is FALSE
 TE: Checking validity of table expansion for query block INS$1 (#0)
 TE: Bypassed: Top query block of a DML.
 CBQT bypassed for query block INS$1 (#0): no complex view, sub-queries or UNION (ALL) queries.
-CBQT: Validity checks failed for fja7zr35gd9gp.
+CBQT: Validity checks failed for 88s989mas4aa7.
 CSE: Considering common sub-expression elimination in query block SEL$1 (#0)
 *************************
 Common Subexpression elimination (CSE)
@@ -1379,7 +1379,7 @@ FPD: Considering simple filter push in query block SEL$1 (#0)
  ?? 
 FPD: Considering simple filter push in query block INS$1 (#0)
  ?? 
-apadrv-start sqlid=16764930782030898677
+apadrv-start sqlid=9538949796212123975
   :
     call(in-use=3368, alloc=16344), compile(in-use=61424, alloc=62784), execution(in-use=3992, alloc=8088)
 
@@ -1394,16 +1394,16 @@ kkoqbc: optimizing query block SEL$1 (#0)
         :
     call(in-use=3368, alloc=16344), compile(in-use=63224, alloc=66928), execution(in-use=3992, alloc=8088)
 
-kkoqbc-subheap (create addr=0x7f9f6808fa10)
+kkoqbc-subheap (create addr=0x7faf0262fa10)
 ****************
 QUERY BLOCK TEXT
 ****************
-select  /*+ PARALLEL(t2,8) */ * from sales t2
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
 signature (optimizer): qb_name=SEL$1 nbfros=1 flg=0
-  fro(0): flg=0 objn=89406 hint_alias="T2"@"SEL$1"
+  fro(0): flg=0 objn=89449 hint_alias="T2"@"SEL$1"
 
 -----------------------------
 SYSTEM STATISTICS INFORMATION
@@ -1418,13 +1418,13 @@ SYSTEM STATISTICS INFORMATION
 BASE STATISTICAL INFORMATION
 ***********************
 Table Stats::
-  Table: SALES  Alias: T2
+  Table: SALES_DL  Alias: T2
     #Rows: 1000000  #Blks:  2008  AvgRowLen:  9.00  ChainCnt:  0.00
-Access path analysis for SALES
+Access path analysis for SALES_DL
 ***************************************
 SINGLE TABLE ACCESS PATH 
-  Single Table Cardinality Estimation for SALES[T2] 
-  Table: SALES  Alias: T2
+  Single Table Cardinality Estimation for SALES_DL[T2] 
+  Table: SALES_DL  Alias: T2
     Card: Original: 1000000.000000  Rounded: 1000000  Computed: 1000000.00  Non Adjusted: 1000000.00
   Access Path: TableScan
     Cost:  549.61  Resp: 76.33  Degree: 0
@@ -1442,7 +1442,7 @@ GENERAL PLANS
 ***************************************
 Considering cardinality-based initial join order.
 Permutations for Starting Table :0
-Join order[1]:  SALES[T2]#0
+Join order[1]:  SALES_DL[T2]#0
 ***********************
 Best so far:  Table#: 0  cost: 76.3345  card: 1000000.0000  bytes: 9000000
 ***********************
@@ -1460,7 +1460,7 @@ Final cost for query block SEL$1 (#0) - All Rows Plan:
   Cost: 76.3345  Degree: 8  Card: 1000000.0000  Bytes: 9000000
   Resc: 549.6084  Resc_io: 545.0000  Resc_cpu: 170000000
   Resp: 76.3345  Resp_io: 75.6944  Resc_cpu: 23611111
-kkoqbc-subheap (delete addr=0x7f9f6808fa10, in-use=23784, alloc=32840)
+kkoqbc-subheap (delete addr=0x7faf0262fa10, in-use=23784, alloc=32840)
 kkoqbc-end:
         :
     call(in-use=8608, alloc=49288), compile(in-use=65600, alloc=66928), execution(in-use=3992, alloc=8088)
@@ -1471,7 +1471,7 @@ kkoqbc: optimizing query block INS$1 (#0)
         :
     call(in-use=8608, alloc=49288), compile(in-use=65696, alloc=66928), execution(in-use=3992, alloc=8088)
 
-kkoqbc-subheap (create addr=0x7f9f6808df78)
+kkoqbc-subheap (create addr=0x7faf0262df78)
 ****************
 QUERY BLOCK TEXT
 ****************
@@ -1480,7 +1480,7 @@ Not available.
 QUERY BLOCK SIGNATURE
 ---------------------
 signature (optimizer): qb_name=INS$1 nbfros=1 flg=0
-  fro(0): flg=0 objn=89407 hint_alias="T1"@"INS$1"
+  fro(0): flg=0 objn=89450 hint_alias="T1"@"INS$1"
 
 -----------------------------
 SYSTEM STATISTICS INFORMATION
@@ -1535,7 +1535,7 @@ Final cost for query block INS$1 (#0) - All Rows Plan:
   Cost: 2.0001  Degree: 8  Card: 82.0000  Bytes: 2132
   Resc: 2.0004  Resc_io: 2.0000  Resc_cpu: 13940
   Resp: 2.0001  Resp_io: 2.0000  Resc_cpu: 1936
-kkoqbc-subheap (delete addr=0x7f9f6808df78, in-use=23784, alloc=32840)
+kkoqbc-subheap (delete addr=0x7faf0262df78, in-use=23784, alloc=32840)
 kkoqbc-end:
         :
     call(in-use=13848, alloc=65656), compile(in-use=67800, alloc=71072), execution(in-use=4360, alloc=8088)
@@ -1573,13 +1573,13 @@ kkeCostToTime: using io calibrate stats
 Starting SQL statement dump
 
 user_id=90 user_name=ADHOC module=SQL*Plus action=
-sql_id=fja7zr35gd9gp plan_hash_value=-71132608 problem_type=0
------ Current SQL Statement for this session (sql_id=fja7zr35gd9gp) -----
+sql_id=88s989mas4aa7 plan_hash_value=-460279989 problem_type=0
+----- Current SQL Statement for this session (sql_id=88s989mas4aa7) -----
 insert /*+ APPEND PARALLEL(t1,8) */ into sales_copy t1
-select  /*+ PARALLEL(t2,8) */ * from sales t2
-sql_text_length=101
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
+sql_text_length=104
 sql=insert /*+ APPEND PARALLEL(t1,8) */ into sales_copy t1
-select  /*+ PARALLEL(t2,8) */ * from sales t2
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
 ----- Explain Plan Dump -----
 ----- Plan Table -----
  
@@ -1594,7 +1594,7 @@ Plan Table
 | 2   |   PX SEND QC (RANDOM)  | :TQ10000|  977K | 8789K |    76 |  00:00:01 |:Q1000| P->S |QC (RANDOM)|
 | 3   |    LOAD AS SELECT      |         |       |       |       |           |:Q1000| PCWP |           |
 | 4   |     PX BLOCK ITERATOR  |         |  977K | 8789K |    76 |  00:00:01 |:Q1000| PCWC |           |
-| 5   |      TABLE ACCESS FULL | SALES   |  977K | 8789K |    76 |  00:00:01 |:Q1000| PCWP |           |
+| 5   |      TABLE ACCESS FULL | SALES_DL|  977K | 8789K |    76 |  00:00:01 |:Q1000| PCWP |           |
 -----------------------------------------+-----------------------------------+-------------------------+
 Predicate Information:
 ----------------------
@@ -1605,8 +1605,8 @@ Content of other_xml column
   load_type      : temp-segment
   db_version     : 11.2.0.4
   parse_schema   : ADHOC
-  plan_hash      : 4223834688
-  plan_hash_2    : 1609690642
+  plan_hash      : 3834687307
+  plan_hash_2    : 1294138664
   Outline Data:
   /*+
     BEGIN_OUTLINE_DATA
@@ -1646,14 +1646,14 @@ _sort_multiblock_read_count         = 2
 _hash_multiblock_io_count           = 0
 _db_file_optimizer_read_count       = 8
 _optimizer_max_permutations         = 2000
-pga_aggregate_target                = 524288 KB
+pga_aggregate_target                = 475136 KB
 _pga_max_size                       = 204800 KB
 _query_rewrite_maxdisjunct          = 257
 _smm_auto_min_io_size               = 56 KB
 _smm_auto_max_io_size               = 248 KB
 _smm_min_size                       = 475 KB
-_smm_max_size_static                = 102400 KB
-_smm_px_max_size_static             = 262144 KB
+_smm_max_size_static                = 95027 KB
+_smm_px_max_size_static             = 237568 KB
 _cpu_to_io                          = 0
 _optimizer_undo_cost_change         = 11.2.0.4
 parallel_query_mode                 = enabled
@@ -2802,8 +2802,8 @@ Bug Fix Control Environment
 
 
 Query Block Registry:
-SEL$1 0x680849a8 (PARSER)
-INS$1 0x68082820 (PARSER) [FINAL]
+SEL$1 0x26249a8 (PARSER)
+INS$1 0x2622820 (PARSER) [FINAL]
 
 :
     call(in-use=19256, alloc=65656), compile(in-use=105832, alloc=166480), execution(in-use=13680, alloc=16200)
@@ -2811,23 +2811,23 @@ INS$1 0x68082820 (PARSER) [FINAL]
 End of Optimizer State Dump
 Dumping Hints
 =============
-  atom_hint=(@=0x9fb8dd18 err=0 resol=0 used=1 token=814 org=1 lvl=1 txt=APPEND ())
-  atom_hint=(@=0x7f9f68082498 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T1",8) )
-  atom_hint=(@=0x7f9f680807d8 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T2",8) )
+  atom_hint=(@=0x9e953650 err=0 resol=0 used=1 token=814 org=1 lvl=1 txt=APPEND ())
+  atom_hint=(@=0x7faf02622498 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T1",8) )
+  atom_hint=(@=0x7faf026207d8 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T2",8) )
 ====================== END SQL Statement Dump ======================
-Registered qb: INS$1 0x67becf30 (PARSER)
+Registered qb: INS$1 0x239c2e8 (PARSER)
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
   signature (): qb_name=INS$1 nbfros=1 flg=0
-    fro(0): flg=4 objn=89407 hint_alias="T1"@"INS$1"
+    fro(0): flg=4 objn=89450 hint_alias="T1"@"INS$1"
 
-Registered qb: SEL$1 0x67bedb20 (PARSER)
+Registered qb: SEL$1 0x239e420 (PARSER)
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
   signature (): qb_name=SEL$1 nbfros=1 flg=0
-    fro(0): flg=4 objn=89406 hint_alias="T2"@"SEL$1"
+    fro(0): flg=4 objn=89449 hint_alias="T2"@"SEL$1"
 
 SPM: statement not found in SMB
 
@@ -2843,9 +2843,9 @@ Predicate Move-Around (PM)
 OPTIMIZER INFORMATION
 
 ******************************************
------ Current SQL Statement for this session (sql_id=fja7zr35gd9gp) -----
+----- Current SQL Statement for this session (sql_id=88s989mas4aa7) -----
 insert /*+ APPEND PARALLEL(t1,8) */ into sales_copy t1
-select  /*+ PARALLEL(t2,8) */ * from sales t2
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
 *******************************************
 Legend
 The following abbreviations are used by optimizer trace.
@@ -2908,7 +2908,6 @@ PARAMETERS USED BY THE OPTIMIZER
   PARAMETERS WITH ALTERED VALUES
   ******************************
 Compilation Environment Dump
-_smm_min_size                       = 475 KB
 parallel_dml_mode                   = enabled
 parallel_query_default_dop          = 2
 Bug Fix Control Environment
@@ -2941,13 +2940,14 @@ _sort_multiblock_read_count         = 2
 _hash_multiblock_io_count           = 0
 _db_file_optimizer_read_count       = 8
 _optimizer_max_permutations         = 2000
-pga_aggregate_target                = 524288 KB
+pga_aggregate_target                = 475136 KB
 _pga_max_size                       = 204800 KB
 _query_rewrite_maxdisjunct          = 257
 _smm_auto_min_io_size               = 56 KB
 _smm_auto_max_io_size               = 248 KB
-_smm_max_size_static                = 102400 KB
-_smm_px_max_size_static             = 262144 KB
+_smm_min_size                       = 475 KB
+_smm_max_size_static                = 95027 KB
+_smm_px_max_size_static             = 237568 KB
 _cpu_to_io                          = 0
 _optimizer_undo_cost_change         = 11.2.0.4
 parallel_query_mode                 = enabled
@@ -4115,7 +4115,7 @@ ST: not valid since star transformation parameter is FALSE
 TE: Checking validity of table expansion for query block INS$1 (#0)
 TE: Bypassed: Top query block of a DML.
 CBQT bypassed for query block INS$1 (#0): no complex view, sub-queries or UNION (ALL) queries.
-CBQT: Validity checks failed for fja7zr35gd9gp.
+CBQT: Validity checks failed for 88s989mas4aa7.
 CSE: Considering common sub-expression elimination in query block SEL$1 (#0)
 *************************
 Common Subexpression elimination (CSE)
@@ -4148,7 +4148,7 @@ ST: not valid since star transformation parameter is FALSE
 TE: Checking validity of table expansion for query block INS$1 (#0)
 TE: Bypassed: Top query block of a DML.
 CBQT bypassed for query block INS$1 (#0): no complex view, sub-queries or UNION (ALL) queries.
-CBQT: Validity checks failed for fja7zr35gd9gp.
+CBQT: Validity checks failed for 88s989mas4aa7.
 CSE: Considering common sub-expression elimination in query block SEL$1 (#0)
 *************************
 Common Subexpression elimination (CSE)
@@ -4174,9 +4174,9 @@ FPD: Considering simple filter push in query block SEL$1 (#0)
  ?? 
 FPD: Considering simple filter push in query block INS$1 (#0)
  ?? 
-apadrv-start sqlid=16764930782030898677
+apadrv-start sqlid=9538949796212123975
   :
-    call(in-use=1664, alloc=16344), compile(in-use=61600, alloc=63856), execution(in-use=3992, alloc=8088)
+    call(in-use=1664, alloc=16344), compile(in-use=61432, alloc=61512), execution(in-use=3992, alloc=8088)
 
 *******************************************
 Peeked values of the binds in SQL statement
@@ -4187,18 +4187,18 @@ SELECT /*+ PARALLEL ("T1",8) */ 0 FROM "ADHOC"."SALES_COPY" "T1"
 kkoqbc: optimizing query block SEL$1 (#0)
         
         :
-    call(in-use=1664, alloc=16344), compile(in-use=63400, alloc=63856), execution(in-use=3992, alloc=8088)
+    call(in-use=1664, alloc=16344), compile(in-use=63224, alloc=65656), execution(in-use=3992, alloc=8088)
 
-kkoqbc-subheap (create addr=0x7f9f67bf2a88)
+kkoqbc-subheap (create addr=0x7faf02397ab0)
 ****************
 QUERY BLOCK TEXT
 ****************
-select  /*+ PARALLEL(t2,8) */ * from sales t2
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
 signature (optimizer): qb_name=SEL$1 nbfros=1 flg=0
-  fro(0): flg=0 objn=89406 hint_alias="T2"@"SEL$1"
+  fro(0): flg=0 objn=89449 hint_alias="T2"@"SEL$1"
 
 -----------------------------
 SYSTEM STATISTICS INFORMATION
@@ -4213,13 +4213,13 @@ SYSTEM STATISTICS INFORMATION
 BASE STATISTICAL INFORMATION
 ***********************
 Table Stats::
-  Table: SALES  Alias: T2
+  Table: SALES_DL  Alias: T2
     #Rows: 1000000  #Blks:  2008  AvgRowLen:  9.00  ChainCnt:  0.00
-Access path analysis for SALES
+Access path analysis for SALES_DL
 ***************************************
 SINGLE TABLE ACCESS PATH 
-  Single Table Cardinality Estimation for SALES[T2] 
-  Table: SALES  Alias: T2
+  Single Table Cardinality Estimation for SALES_DL[T2] 
+  Table: SALES_DL  Alias: T2
     Card: Original: 1000000.000000  Rounded: 1000000  Computed: 1000000.00  Non Adjusted: 1000000.00
   Access Path: TableScan
     Cost:  549.61  Resp: 76.33  Degree: 0
@@ -4237,7 +4237,7 @@ GENERAL PLANS
 ***************************************
 Considering cardinality-based initial join order.
 Permutations for Starting Table :0
-Join order[1]:  SALES[T2]#0
+Join order[1]:  SALES_DL[T2]#0
 ***********************
 Best so far:  Table#: 0  cost: 76.3345  card: 1000000.0000  bytes: 9000000
 ***********************
@@ -4255,18 +4255,18 @@ Final cost for query block SEL$1 (#0) - All Rows Plan:
   Cost: 76.3345  Degree: 8  Card: 1000000.0000  Bytes: 9000000
   Resc: 549.6084  Resc_io: 545.0000  Resc_cpu: 170000000
   Resp: 76.3345  Resp_io: 75.6944  Resc_cpu: 23611111
-kkoqbc-subheap (delete addr=0x7f9f67bf2a88, in-use=23784, alloc=32840)
+kkoqbc-subheap (delete addr=0x7faf02397ab0, in-use=23784, alloc=32840)
 kkoqbc-end:
         :
-    call(in-use=6904, alloc=49288), compile(in-use=65832, alloc=68608), execution(in-use=3992, alloc=8088)
+    call(in-use=6904, alloc=49288), compile(in-use=65600, alloc=69800), execution(in-use=3992, alloc=8088)
 
 kkoqbc: finish optimizing query block SEL$1 (#0)
 kkoqbc: optimizing query block INS$1 (#0)
         
         :
-    call(in-use=6904, alloc=49288), compile(in-use=65928, alloc=68608), execution(in-use=3992, alloc=8088)
+    call(in-use=6904, alloc=49288), compile(in-use=65696, alloc=69800), execution(in-use=3992, alloc=8088)
 
-kkoqbc-subheap (create addr=0x7f9f67bf0ff0)
+kkoqbc-subheap (create addr=0x7faf02396018)
 ****************
 QUERY BLOCK TEXT
 ****************
@@ -4275,7 +4275,7 @@ Not available.
 QUERY BLOCK SIGNATURE
 ---------------------
 signature (optimizer): qb_name=INS$1 nbfros=1 flg=0
-  fro(0): flg=0 objn=89407 hint_alias="T1"@"INS$1"
+  fro(0): flg=0 objn=89450 hint_alias="T1"@"INS$1"
 
 -----------------------------
 SYSTEM STATISTICS INFORMATION
@@ -4330,15 +4330,15 @@ Final cost for query block INS$1 (#0) - All Rows Plan:
   Cost: 2.0001  Degree: 8  Card: 82.0000  Bytes: 2132
   Resc: 2.0004  Resc_io: 2.0000  Resc_cpu: 13940
   Resp: 2.0001  Resp_io: 2.0000  Resc_cpu: 1936
-kkoqbc-subheap (delete addr=0x7f9f67bf0ff0, in-use=23784, alloc=32840)
+kkoqbc-subheap (delete addr=0x7faf02396018, in-use=23784, alloc=32840)
 kkoqbc-end:
         :
-    call(in-use=12144, alloc=49288), compile(in-use=68016, alloc=68608), execution(in-use=4360, alloc=8088)
+    call(in-use=12144, alloc=49288), compile(in-use=67792, alloc=69800), execution(in-use=4360, alloc=8088)
 
 kkoqbc: finish optimizing query block INS$1 (#0)
 apadrv-end
           :
-    call(in-use=12144, alloc=49288), compile(in-use=69272, alloc=72752), execution(in-use=4360, alloc=8088)
+    call(in-use=12144, alloc=49288), compile(in-use=69040, alloc=69800), execution(in-use=4360, alloc=8088)
 
 
 kkeCostToTime: using io calibrate stats 
@@ -4368,13 +4368,13 @@ kkeCostToTime: using io calibrate stats
 Starting SQL statement dump
 
 user_id=90 user_name=ADHOC module=SQL*Plus action=
-sql_id=fja7zr35gd9gp plan_hash_value=-71132608 problem_type=0
------ Current SQL Statement for this session (sql_id=fja7zr35gd9gp) -----
+sql_id=88s989mas4aa7 plan_hash_value=-460279989 problem_type=0
+----- Current SQL Statement for this session (sql_id=88s989mas4aa7) -----
 insert /*+ APPEND PARALLEL(t1,8) */ into sales_copy t1
-select  /*+ PARALLEL(t2,8) */ * from sales t2
-sql_text_length=101
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
+sql_text_length=104
 sql=insert /*+ APPEND PARALLEL(t1,8) */ into sales_copy t1
-select  /*+ PARALLEL(t2,8) */ * from sales t2
+select  /*+ PARALLEL(t2,8) */ * from sales_dl t2
 ----- Explain Plan Dump -----
 ----- Plan Table -----
  
@@ -4389,7 +4389,7 @@ Plan Table
 | 2   |   PX SEND QC (RANDOM)  | :TQ10000|  977K | 8789K |    76 |  00:00:01 |:Q1000| P->S |QC (RANDOM)|
 | 3   |    LOAD AS SELECT      |         |       |       |       |           |:Q1000| PCWP |           |
 | 4   |     PX BLOCK ITERATOR  |         |  977K | 8789K |    76 |  00:00:01 |:Q1000| PCWC |           |
-| 5   |      TABLE ACCESS FULL | SALES   |  977K | 8789K |    76 |  00:00:01 |:Q1000| PCWP |           |
+| 5   |      TABLE ACCESS FULL | SALES_DL|  977K | 8789K |    76 |  00:00:01 |:Q1000| PCWP |           |
 -----------------------------------------+-----------------------------------+-------------------------+
 Predicate Information:
 ----------------------
@@ -4400,8 +4400,8 @@ Content of other_xml column
   load_type      : temp-segment
   db_version     : 11.2.0.4
   parse_schema   : ADHOC
-  plan_hash      : 4223834688
-  plan_hash_2    : 1609690642
+  plan_hash      : 3834687307
+  plan_hash_2    : 1294138664
   Outline Data:
   /*+
     BEGIN_OUTLINE_DATA
@@ -4441,14 +4441,14 @@ _sort_multiblock_read_count         = 2
 _hash_multiblock_io_count           = 0
 _db_file_optimizer_read_count       = 8
 _optimizer_max_permutations         = 2000
-pga_aggregate_target                = 524288 KB
+pga_aggregate_target                = 475136 KB
 _pga_max_size                       = 204800 KB
 _query_rewrite_maxdisjunct          = 257
 _smm_auto_min_io_size               = 56 KB
 _smm_auto_max_io_size               = 248 KB
 _smm_min_size                       = 475 KB
-_smm_max_size_static                = 102400 KB
-_smm_px_max_size_static             = 262144 KB
+_smm_max_size_static                = 95027 KB
+_smm_px_max_size_static             = 237568 KB
 _cpu_to_io                          = 0
 _optimizer_undo_cost_change         = 11.2.0.4
 parallel_query_mode                 = enabled
@@ -5597,16 +5597,16 @@ Bug Fix Control Environment
 
 
 Query Block Registry:
-SEL$1 0x67bedb20 (PARSER)
-INS$1 0x67becf30 (PARSER) [FINAL]
+SEL$1 0x239e420 (PARSER)
+INS$1 0x239c2e8 (PARSER) [FINAL]
 
 :
-    call(in-use=17552, alloc=49288), compile(in-use=105896, alloc=167416), execution(in-use=12704, alloc=16200)
+    call(in-use=17552, alloc=49288), compile(in-use=105656, alloc=169024), execution(in-use=12704, alloc=16200)
 
 End of Optimizer State Dump
 Dumping Hints
 =============
-  atom_hint=(@=0x9fb8dd18 err=0 resol=0 used=1 token=814 org=1 lvl=1 txt=APPEND ())
-  atom_hint=(@=0x7f9f67becba8 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T1",8) )
-  atom_hint=(@=0x7f9f67ff1058 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T2",8) )
+  atom_hint=(@=0x9e953650 err=0 resol=0 used=1 token=814 org=1 lvl=1 txt=APPEND ())
+  atom_hint=(@=0x7faf0239bf60 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T1",8) )
+  atom_hint=(@=0x7faf0239a2f0 err=0 resol=1 used=1 token=177 org=1 lvl=3 txt=PARALLEL ("T2",8) )
 ====================== END SQL Statement Dump ======================

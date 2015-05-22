@@ -126,27 +126,25 @@ SEGMENT_TYPE        EXTENT_ID      BYTES     BLOCKS
 ------------------ ---------- ---------- ----------
 TABLE                       0      65536          8
 TABLE                       1    1048576        128
-TABLE                       2    1048576        128
-TABLE                       3     851968        104
+TABLE                       2     917504        112
+TABLE                       3    1048576        128
 TABLE                       4    1048576        128
-TABLE                       5    1048576        128
-TABLE                       6     589824         72
-TABLE                       7    1048576        128
-TABLE                       8     786432         96
+TABLE                       5     196608         24
+TABLE                       6    1048576        128
+TABLE                       7     983040        120
+TABLE                       8    1048576        128
 TABLE                       9    1048576        128
-TABLE                      10    1048576        128
-TABLE                      11     196608         24
-TABLE                      12    1048576        128
-TABLE                      13     131072         16
-TABLE                      14    1048576        128
+TABLE                      10     131072         16
+TABLE                      11    1048576        128
+TABLE                      12     917504        112
+TABLE                      13    1048576        128
+TABLE                      14     917504        112
 TABLE                      15    1048576        128
-TABLE                      16     196608         24
+TABLE                      16     786432         96
 TABLE                      17    1048576        128
 TABLE                      18    1048576        128
-TABLE                      19    1048576        128
-TABLE                      20      65536          8
 
-21 rows selected.
+19 rows selected.
 
 SQL> 
 SQL> --
@@ -191,59 +189,57 @@ SEGMENT_TYPE        EXTENT_ID      BYTES     BLOCKS
 ------------------ ---------- ---------- ----------
 TABLE                       0      65536          8
 TABLE                       1    1048576        128
-TABLE                       2    1048576        128
-TABLE                       3     851968        104
+TABLE                       2     917504        112
+TABLE                       3    1048576        128
 TABLE                       4    1048576        128
-TABLE                       5    1048576        128
-TABLE                       6     589824         72
-TABLE                       7    1048576        128
-TABLE                       8     786432         96
+TABLE                       5     196608         24
+TABLE                       6    1048576        128
+TABLE                       7     983040        120
+TABLE                       8    1048576        128
 TABLE                       9    1048576        128
-TABLE                      10    1048576        128
-TABLE                      11     196608         24
-TABLE                      12    1048576        128
-TABLE                      13     131072         16
-TABLE                      14    1048576        128
+TABLE                      10     131072         16
+TABLE                      11    1048576        128
+TABLE                      12     917504        112
+TABLE                      13    1048576        128
+TABLE                      14     917504        112
 TABLE                      15    1048576        128
-TABLE                      16     196608         24
+TABLE                      16     786432         96
 TABLE                      17    1048576        128
 TABLE                      18    1048576        128
-TABLE                      19    1048576        128
+TABLE                      19      65536          8
 TABLE                      20      65536          8
 TABLE                      21      65536          8
 TABLE                      22      65536          8
 TABLE                      23      65536          8
 TABLE                      24      65536          8
-TABLE                      25      65536          8
-TABLE                      26      65536          8
-TABLE                      27     131072         16
-TABLE                      28     131072         16
+TABLE                      25     131072         16
+TABLE                      26     131072         16
+TABLE                      27      65536          8
+TABLE                      28      65536          8
 TABLE                      29      65536          8
 TABLE                      30      65536          8
-TABLE                      31     131072         16
-TABLE                      32     131072         16
-TABLE                      33      65536          8
-TABLE                      34      65536          8
+TABLE                      31      65536          8
+TABLE                      32      65536          8
+TABLE                      33     131072         16
+TABLE                      34     131072         16
 TABLE                      35      65536          8
 TABLE                      36      65536          8
-TABLE                      37     131072         16
+TABLE                      37      65536          8
 TABLE                      38      65536          8
 TABLE                      39      65536          8
 TABLE                      40      65536          8
-TABLE                      41      65536          8
-TABLE                      42      65536          8
+TABLE                      41     131072         16
+TABLE                      42     131072         16
 TABLE                      43      65536          8
-TABLE                      44     131072         16
+TABLE                      44      65536          8
 TABLE                      45      65536          8
 TABLE                      46      65536          8
 TABLE                      47      65536          8
 TABLE                      48      65536          8
-TABLE                      49      65536          8
+TABLE                      49     131072         16
 TABLE                      50     131072         16
-TABLE                      51     131072         16
-TABLE                      52      65536          8
 
-53 rows selected.
+51 rows selected.
 
 SQL> 
 SQL> spool off

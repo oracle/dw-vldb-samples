@@ -1,4 +1,4 @@
-Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_ora_15951_EQUI.trc
+Trace file /u01/app/oracle/diag/rdbms/orcl/orcl/trace/orcl_ora_21537_EQUI.trc
 Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production
 With the Partitioning, OLAP, Data Mining and Real Application Testing options
 ORACLE_HOME = /u01/app/oracle/product/11.2.0/dbhome_2
@@ -9,25 +9,25 @@ Version:	#1 SMP Tue Oct 14 01:47:47 PDT 2014
 Machine:	x86_64
 Instance name: orcl
 Redo thread mounted by this instance: 1
-Oracle process number: 26
-Unix process pid: 15951, image: oracle@host11g (TNS V1-V3)
+Oracle process number: 36
+Unix process pid: 21537, image: oracle@host11g (TNS V1-V3)
 
 
-*** 2015-05-12 11:19:13.600
-*** SESSION ID:(52.331) 2015-05-12 11:19:13.600
-*** CLIENT ID:() 2015-05-12 11:19:13.600
-*** SERVICE NAME:(SYS$USERS) 2015-05-12 11:19:13.600
-*** MODULE NAME:(SQL*Plus) 2015-05-12 11:19:13.600
-*** ACTION NAME:() 2015-05-12 11:19:13.600
+*** 2015-05-22 10:59:56.556
+*** SESSION ID:(56.147) 2015-05-22 10:59:56.556
+*** CLIENT ID:() 2015-05-22 10:59:56.556
+*** SERVICE NAME:(SYS$USERS) 2015-05-22 10:59:56.556
+*** MODULE NAME:(SQL*Plus) 2015-05-22 10:59:56.556
+*** ACTION NAME:() 2015-05-22 10:59:56.556
  
-Registered qb: INS$1 0x9de2c070 (PARSER)
+Registered qb: INS$1 0x53b22820 (PARSER)
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
   signature (): qb_name=INS$1 nbfros=1 flg=0
-    fro(0): flg=4 objn=89332 hint_alias="T1"@"INS$1"
+    fro(0): flg=4 objn=89648 hint_alias="T1"@"INS$1"
 
-Registered qb: SEL$1 0x9de2cda0 (PARSER)
+Registered qb: SEL$1 0x53b23550 (PARSER)
 ---------------------
 QUERY BLOCK SIGNATURE
 ---------------------
@@ -114,7 +114,6 @@ PARAMETERS USED BY THE OPTIMIZER
   PARAMETERS WITH ALTERED VALUES
   ******************************
 Compilation Environment Dump
-_smm_min_size                       = 475 KB
 parallel_dml_mode                   = enabled
 parallel_query_default_dop          = 2
 Bug Fix Control Environment
@@ -147,13 +146,14 @@ _sort_multiblock_read_count         = 2
 _hash_multiblock_io_count           = 0
 _db_file_optimizer_read_count       = 8
 _optimizer_max_permutations         = 2000
-pga_aggregate_target                = 524288 KB
+pga_aggregate_target                = 475136 KB
 _pga_max_size                       = 204800 KB
 _query_rewrite_maxdisjunct          = 257
 _smm_auto_min_io_size               = 56 KB
 _smm_auto_max_io_size               = 248 KB
-_smm_max_size_static                = 102400 KB
-_smm_px_max_size_static             = 262144 KB
+_smm_min_size                       = 475 KB
+_smm_max_size_static                = 95027 KB
+_smm_px_max_size_static             = 237568 KB
 _cpu_to_io                          = 0
 _optimizer_undo_cost_change         = 11.2.0.4
 parallel_query_mode                 = enabled
@@ -1382,7 +1382,7 @@ FPD: Considering simple filter push in query block INS$1 (#0)
  ?? 
 apadrv-start sqlid=1851793964424496039
   :
-    call(in-use=3368, alloc=16344), compile(in-use=62128, alloc=66504), execution(in-use=3880, alloc=4032)
+    call(in-use=3368, alloc=16344), compile(in-use=62184, alloc=62784), execution(in-use=3880, alloc=4032)
 
 *******************************************
 Peeked values of the binds in SQL statement
@@ -1393,9 +1393,9 @@ SELECT 0 FROM "ADHOC"."SALES_P2" "T1"
 kkoqbc: optimizing query block SEL$1 (#0)
         
         :
-    call(in-use=3368, alloc=16344), compile(in-use=63920, alloc=66504), execution(in-use=3880, alloc=4032)
+    call(in-use=3368, alloc=16344), compile(in-use=63992, alloc=66928), execution(in-use=3880, alloc=4032)
 
-kkoqbc-subheap (create addr=0x7fa79deafa10)
+kkoqbc-subheap (create addr=0x7f1153b2fa10)
 ****************
 QUERY BLOCK TEXT
 ****************
@@ -1420,23 +1420,23 @@ BASE STATISTICAL INFORMATION
 ***********************
 Table Stats::
   Table: SALES_P  Alias: T2  (NOT ANALYZED)
-    #Rows: 5248  #Blks:  64  AvgRowLen:  100.00  ChainCnt:  0.00
+    #Rows: 190680  #Blks:  2334  AvgRowLen:  100.00  ChainCnt:  0.00
 Access path analysis for SALES_P
 ***************************************
 SINGLE TABLE ACCESS PATH 
   Single Table Cardinality Estimation for SALES_P[T2] 
 
-*** 2015-05-12 11:19:13.654
+*** 2015-05-22 10:59:56.564
 ** Performing dynamic sampling initial checks. **
 ** Dynamic sampling initial checks returning TRUE (level = 2).
 ** Dynamic sampling updated table stats.: blocks=2336
 
-*** 2015-05-12 11:19:13.654
+*** 2015-05-22 10:59:56.564
 ** Generated dynamic sampling query:
     query text : 
 SELECT /* OPT_DYN_SAMP */ /*+ ALL_ROWS IGNORE_WHERE_CLAUSE NO_PARALLEL(SAMPLESUB) opt_param('parallel_execution_enabled', 'false') NO_PARALLEL_INDEX(SAMPLESUB) NO_SQL_TUNE */ NVL(SUM(C1),0), NVL(SUM(C2),0) FROM (SELECT 1 AS C1, 1 AS C2 FROM (SELECT /*+ NO_PARALLEL("ADHOC"."SALES_P") FULL("ADHOC"."SALES_P") NO_PARALLEL_INDEX("ADHOC"."SALES_P") */ * FROM "ADHOC"."SALES_P" SAMPLE BLOCK (2.739726 , 1) SEED (1) WHERE TBL$OR$IDX$PART$NUM("ADHOC"."SALES_P",0,0,0,ROWID) IN (7,10,11,12,13,14,16,20,21,22,23,25,27,32,33,36,37,38,39,41,42,44,45,50,52,53,54,55,58,59,62,63)) "T2") SAMPLESUB
 
-*** 2015-05-12 11:19:13.656
+*** 2015-05-22 10:59:56.565
 ** Executed dynamic sampling query:
     level : 2
     sample pct. : 2.739726
@@ -1445,7 +1445,7 @@ SELECT /* OPT_DYN_SAMP */ /*+ ALL_ROWS IGNORE_WHERE_CLAUSE NO_PARALLEL(SAMPLESUB
       partitions actually sampled from : 32
     actual sample size : 12032
     filtered sample card. : 12032
-    orig. card. : 5248
+    orig. card. : 190680
     block cnt. table stat. : 2336
     block cnt. for sampling: 2336
     partition subset block cnt. : 1168
@@ -1490,18 +1490,18 @@ Final cost for query block SEL$1 (#0) - All Rows Plan:
   Cost: 177.2355  Degree: 4  Card: 878336.0000  Bytes: 22836736
   Resc: 638.0478  Resc_io: 634.0000  Resc_cpu: 149317120
   Resp: 177.2355  Resp_io: 176.1111  Resc_cpu: 41476978
-kkoqbc-subheap (delete addr=0x7fa79deafa10, in-use=25472, alloc=32840)
+kkoqbc-subheap (delete addr=0x7f1153b2fa10, in-use=25472, alloc=32840)
 kkoqbc-end:
         :
-    call(in-use=19416, alloc=65656), compile(in-use=70648, alloc=72720), execution(in-use=5056, alloc=8088)
+    call(in-use=19416, alloc=65656), compile(in-use=70680, alloc=71072), execution(in-use=5056, alloc=8088)
 
 kkoqbc: finish optimizing query block SEL$1 (#0)
 kkoqbc: optimizing query block INS$1 (#0)
         
         :
-    call(in-use=19416, alloc=65656), compile(in-use=70744, alloc=72720), execution(in-use=5056, alloc=8088)
+    call(in-use=19416, alloc=65656), compile(in-use=70776, alloc=71072), execution(in-use=5056, alloc=8088)
 
-kkoqbc-subheap (create addr=0x7fa79deafa10)
+kkoqbc-subheap (create addr=0x7f1153b2fa10)
 ****************
 QUERY BLOCK TEXT
 ****************
@@ -1510,7 +1510,7 @@ Not available.
 QUERY BLOCK SIGNATURE
 ---------------------
 signature (optimizer): qb_name=INS$1 nbfros=1 flg=0
-  fro(0): flg=0 objn=89332 hint_alias="T1"@"INS$1"
+  fro(0): flg=0 objn=89648 hint_alias="T1"@"INS$1"
 
 -----------------------------
 SYSTEM STATISTICS INFORMATION
@@ -1565,15 +1565,15 @@ Final cost for query block INS$1 (#0) - All Rows Plan:
   Cost: 5.2845  Degree: 4  Card: 5248.0000  Bytes: 136448
   Resc: 19.0242  Resc_io: 19.0000  Resc_cpu: 892160
   Resp: 5.2845  Resp_io: 5.2778  Resc_cpu: 247822
-kkoqbc-subheap (delete addr=0x7fa79deafa10, in-use=23832, alloc=32840)
+kkoqbc-subheap (delete addr=0x7f1153b2fa10, in-use=23832, alloc=32840)
 kkoqbc-end:
         :
-    call(in-use=29104, alloc=65656), compile(in-use=73008, alloc=76864), execution(in-use=5192, alloc=8088)
+    call(in-use=29104, alloc=65656), compile(in-use=73040, alloc=75216), execution(in-use=5192, alloc=8088)
 
 kkoqbc: finish optimizing query block INS$1 (#0)
 apadrv-end
           :
-    call(in-use=29104, alloc=65656), compile(in-use=74352, alloc=76864), execution(in-use=5192, alloc=8088)
+    call(in-use=29104, alloc=65656), compile(in-use=74384, alloc=75216), execution(in-use=5192, alloc=8088)
 
 
 kkeCostToTime: using io calibrate stats 
@@ -1678,14 +1678,14 @@ _sort_multiblock_read_count         = 2
 _hash_multiblock_io_count           = 0
 _db_file_optimizer_read_count       = 8
 _optimizer_max_permutations         = 2000
-pga_aggregate_target                = 524288 KB
+pga_aggregate_target                = 475136 KB
 _pga_max_size                       = 204800 KB
 _query_rewrite_maxdisjunct          = 257
 _smm_auto_min_io_size               = 56 KB
 _smm_auto_max_io_size               = 248 KB
 _smm_min_size                       = 475 KB
-_smm_max_size_static                = 102400 KB
-_smm_px_max_size_static             = 262144 KB
+_smm_max_size_static                = 95027 KB
+_smm_px_max_size_static             = 237568 KB
 _cpu_to_io                          = 0
 _optimizer_undo_cost_change         = 11.2.0.4
 parallel_query_mode                 = enabled
@@ -2834,14 +2834,14 @@ Bug Fix Control Environment
 
 
 Query Block Registry:
-SEL$1 0x9de2cda0 (PARSER)
-INS$1 0x9de2c070 (PARSER) [FINAL]
+SEL$1 0x53b23550 (PARSER)
+INS$1 0x53b22820 (PARSER) [FINAL]
 
 :
-    call(in-use=36128, alloc=65656), compile(in-use=111888, alloc=174480), execution(in-use=14688, alloc=16200)
+    call(in-use=36128, alloc=65656), compile(in-use=111936, alloc=174808), execution(in-use=14688, alloc=16200)
 
 End of Optimizer State Dump
 Dumping Hints
 =============
-  atom_hint=(@=0x8c811280 err=0 resol=0 used=1 token=814 org=1 lvl=1 txt=APPEND ())
+  atom_hint=(@=0x9ebf28b0 err=0 resol=0 used=1 token=814 org=1 lvl=1 txt=APPEND ())
 ====================== END SQL Statement Dump ======================

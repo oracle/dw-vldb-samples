@@ -65,10 +65,12 @@ SQL>
 SQL> --
 SQL> -- TSM PCTAS
 SQL> --
-SQL> create table sales_p1 partition by hash (sale_id) partitions 64
-  2  parallel 4
-  3  as select * from sales_dl
-  4  /
+SQL> create table sales_p1
+  2  partition by hash (sale_id)
+  3  partitions 64
+  4  parallel 4
+  5  as select * from sales_dl
+  6  /
 
 Table created.
 
@@ -77,7 +79,7 @@ SQL> select * from table(dbms_xplan.display_cursor);
 
 PLAN_TABLE_OUTPUT
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SQL_ID  0qu2rccyah4nw, child number 0
+SQL_ID  2bptnfjagyuzy, child number 0
 -------------------------------------
 create table sales_p1 partition by hash (sale_id) partitions 64
 parallel 4 as select * from sales_dl
@@ -111,10 +113,12 @@ Note
 30 rows selected.
 
 SQL> 
-SQL> create table sales_p2 partition by hash (sale_id) partitions 64
-  2  parallel 4
-  3  as select * from sales where 1=-1
-  4  /
+SQL> create table sales_p2
+  2  partition by hash (sale_id)
+  3  partitions 64
+  4  parallel 4
+  5  as select * from sales_dl where 1=-1
+  6  /
 
 Table created.
 
@@ -142,13 +146,13 @@ Plan hash value: 1476682445
 --------------------------------------------------------------------------------------------------------------------------------------------
 | Id  | Operation                          | Name     | Rows  | Bytes | Cost (%CPU)| Time     | Pstart| Pstop |    TQ  |IN-OUT| PQ Distrib |
 --------------------------------------------------------------------------------------------------------------------------------------------
-|   0 | INSERT STATEMENT                   |          |       |       |   240 (100)|          |       |       |        |      |            |
+|   0 | INSERT STATEMENT                   |          |       |       |   266 (100)|          |       |       |        |      |            |
 |   1 |  PX COORDINATOR                    |          |       |       |            |          |       |       |        |      |            |
-|   2 |   PX SEND QC (RANDOM)              | :TQ10000 |  1000K|  8789K|   240   (1)| 00:00:01 |       |       |  Q1,00 | P->S | QC (RAND)  |
+|   2 |   PX SEND QC (RANDOM)              | :TQ10000 |  1000K|  8789K|   266   (1)| 00:00:01 |       |       |  Q1,00 | P->S | QC (RAND)  |
 |   3 |    LOAD AS SELECT (EQUI-PARTITION) |          |       |       |            |          |       |       |  Q1,00 | PCWP |            |
-|   4 |     OPTIMIZER STATISTICS GATHERING |          |  1000K|  8789K|   240   (1)| 00:00:01 |       |       |  Q1,00 | PCWP |            |
-|   5 |      PX PARTITION HASH ALL         |          |  1000K|  8789K|   240   (1)| 00:00:01 |     1 |    64 |  Q1,00 | PCWC |            |
-|   6 |       TABLE ACCESS FULL            | SALES_P1 |  1000K|  8789K|   240   (1)| 00:00:01 |     1 |    64 |  Q1,00 | PCWP |            |
+|   4 |     OPTIMIZER STATISTICS GATHERING |          |  1000K|  8789K|   266   (1)| 00:00:01 |       |       |  Q1,00 | PCWP |            |
+|   5 |      PX PARTITION HASH ALL         |          |  1000K|  8789K|   266   (1)| 00:00:01 |     1 |    64 |  Q1,00 | PCWC |            |
+|   6 |       TABLE ACCESS FULL            | SALES_P1 |  1000K|  8789K|   266   (1)| 00:00:01 |     1 |    64 |  Q1,00 | PCWP |            |
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 Note

@@ -48,7 +48,7 @@ select * from table(dbms_xplan.display_cursor);
 
 create table sales_p2 partition by hash (sale_id) partitions 4 
 parallel 4
-as select * from sales where 1=-1
+as select * from sales_dl where 1=-1
 /
 
 --

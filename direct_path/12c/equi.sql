@@ -52,7 +52,7 @@ create table sales_p2
 partition by hash (sale_id) 
 partitions 64 
 parallel 4
-as select * from sales where 1=-1
+as select * from sales_dl where 1=-1
 /
 
 --
