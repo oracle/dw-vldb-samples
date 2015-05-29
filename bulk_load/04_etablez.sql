@@ -1,5 +1,8 @@
 --
--- This script creates an external table.
+-- This script creates an external table with a 
+-- preprocessor script called "unc.sh". In this case 
+-- the pre-processor will gunzip the data files 
+-- on-the-fly as they are loaded.
 -- The "dirs" script must be run first because
 -- the directories are referenced.
 --
