@@ -3,6 +3,12 @@
 # the one referenced in the 01_dirs.sql
 # script.
 #
+# It creates four example data files and
+# the "unc.sh" script.
+# If you want to do some more serious volume tests,
+# you can make the ROWCOUNT larger but it could
+# take some time to complete!
+#
 DIR=/home/oracle/direct
 ROWCOUNT=1000
 
