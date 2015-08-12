@@ -4,7 +4,7 @@ Some scripts for trying out SQL Plan Management with Oracle Database In-Memory.
 
 Tested on Oracle Database 12c, version 12.1.0.2.
 
-They are intended to supplement parts 1 to 3 of a <a href="http://blogs.oracle.com/optimizer">series of blog posts on SPM and Oracle Database In-Memory.</a> Coming soon.
+They are intended to supplement parts 1 to 3 of a <a href="https://blogs.oracle.com/optimizer/entry/tips_on_sql_plan_management">series of blog posts on SPM and Oracle Database In-Memory.</a>.
 
 Example "lst" files are provided so that you can see the expected output.
 
