@@ -6,4 +6,4 @@ The example tpcds_etabs.sql script works for TPC-DS v1.4. For other versions, ju
 
 If you leave the script unedited, you just create a symbolic link "/tmp/tpcdsload" pointing to the directory containing all of your dsdgen files.
 
-The external tables are named "X_<oracle_table_name>" - so take care if you have any tables called "X_something" as these might be dropped when you run tpcds_etabs.sql.
+The external tables are named "X_tpcds_table_name" - so take care if you have any tables called "X_something" as these might be dropped when you run tpcds_etabs.sql.
