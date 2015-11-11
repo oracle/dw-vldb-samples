@@ -5,3 +5,5 @@ Run the tpcds_makex.sql in your TPC-DS schema at it will spool a new script call
 The example tpcds_etabs.sql script works for TPC-DS v1.4. For other versions, just run tpcds_makex.sql to create a new tpcds_etabs.sql file.
 
 If you leave the script unedited, you just create a symbolic link "/tmp/tpcdsload" pointing to the directory containing all of your dsdgen files.
+
+The external tables are named "X_<oracle_table_name>" - so take care if you have any tables called "X_something" as these might be dropped when you run tpcds_etabs.sql.
