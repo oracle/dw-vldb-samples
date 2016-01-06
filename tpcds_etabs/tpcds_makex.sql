@@ -10,7 +10,7 @@ declare
   datat user_tab_columns.data_type%type;
 begin
   dbms_output.put_line('create or replace directory tpcsd_load_dir as ''/tmp/tpcdsload'';');
-  for tabl in (select table_name from user_tables where table_name not in (select table_name from user_external_tables) and table_name not like 'S_%' order by 1)
+  for tabl in (select table_name from user_tables where table_name not in (select table_name from user_external_tables) and substr(table_name,1,2) <> 'S_' order by 1)
   loop
      dbms_output.put_line('-------------------------------------------------------------------------------');
      dbms_output.put_line('drop table X_'||tabl.table_name||';');
