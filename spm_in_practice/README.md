@@ -1,8 +1,10 @@
 <h2>Utility Scripts for Using SPM in Practice</h2>
 
-The example.sql script will demonstrate the scripts in Wutil". 
+The example.sql script will demonstrate the scripts in "util". You will need permission
+to create an Oracle user "spmtest". The user is created for you, so be
+sure to use a test environment when you experiment with this for the first time.
 
-Example output is shown in example.lst.
+Example output is shown in example.lst. 
 
 For background, check out http://blogs.oracle.com/optimizer
 
