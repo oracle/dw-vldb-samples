@@ -77,6 +77,30 @@ PROMPT **** because the index has gone.
 PROMPT **** Press <CR> to continue...
 PAUSE
 
+var planname varchar2(100)
+begin
+  select plan_name into :planname from dba_sql_plan_baselines where parsing_schema_name = 'SPMTEST' and accepted = 'YES';
+end;
+/
+
+column hint format a100
+SELECT  extractValue(value(h),'.') AS hint
+FROM    sys.sqlobj$plan od,
+        TABLE(xmlsequence(
+          extract(xmltype(od.other_xml),'/*/outline_data/hint'))) h
+WHERE od.other_xml is not null
+AND   (signature,category,obj_type,plan_id) = (select signature,
+                             category,
+                             obj_type,
+                             plan_id
+                      from   sys.sqlobj$ so
+                       where so.name = :planname);
+
+PROMPT **** Above - the SQL plan baseline outline hints include an INDEX hint for the index we dropped.
+PROMPT **** The query is no longer able to obey this hint.
+PROMPT **** Press <CR> to continue...
+PAUSE
+
 PROMPT **** We now expect to find our problem query...
 @util/nomatchu SPMTEST
 

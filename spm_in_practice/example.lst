@@ -383,6 +383,49 @@ SQL> PROMPT **** Press <CR> to continue...
 SQL> PAUSE
 
 SQL> 
+SQL> var planname varchar2(100)
+SQL> begin
+  2    select plan_name into :planname from dba_sql_plan_baselines where parsing_schema_name = 'SPMTEST' and accepted = 'YES';
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> 
+SQL> column hint format a100
+SQL> SELECT  extractValue(value(h),'.') AS hint
+  2  FROM    sys.sqlobj$plan od,
+  3          TABLE(xmlsequence(
+  4            extract(xmltype(od.other_xml),'/*/outline_data/hint'))) h
+  5  WHERE od.other_xml is not null
+  6  AND   (signature,category,obj_type,plan_id) = (select signature,
+  7                               category,
+  8                               obj_type,
+  9                               plan_id
+ 10                        from   sys.sqlobj$ so
+ 11                         where so.name = :planname);
+
+HINT
+----------------------------------------------------------------------------------------------------
+IGNORE_OPTIM_EMBEDDED_HINTS
+OPTIMIZER_FEATURES_ENABLE('12.1.0.2')
+DB_VERSION('12.1.0.2')
+ALL_ROWS
+OUTLINE_LEAF(@"SEL$1")
+INDEX(@"SEL$1" "TAB1"@"SEL$1" ("TAB1"."ID"))
+
+6 rows selected.
+
+SQL> 
+SQL> PROMPT **** Above - the SQL plan baseline outline hints include an INDEX hint for the index we dropped.
+**** Above - the SQL plan baseline outline hints include an INDEX hint for the index we dropped.
+SQL> PROMPT **** The query is no longer able to obey this hint.
+**** The query is no longer able to obey this hint.
+SQL> PROMPT **** Press <CR> to continue...
+**** Press <CR> to continue...
+SQL> PAUSE
+
+SQL> 
 SQL> PROMPT **** We now expect to find our problem query...
 **** We now expect to find our problem query...
 SQL> @util/nomatchu SPMTEST
@@ -426,7 +469,7 @@ new  16:                AND    parsing_schema_name = 'SPMTEST')
 
 SQL_TEXT                                             CPU_TIME BUFFER_GETS EXECUTIONS PARSING_SCHEMA_NAME            SQL_ID        EXACT_MATCHING_SIGNATURE
 -------------------------------------------------- ---------- ----------- ---------- ------------------------------ ------------- ------------------------
-select /* MYSPMTEST */ count(*) from tab1 where id       5000          23          1 SPMTEST                        00axwq5w1q7x3     10438310272222376619
+select /* MYSPMTEST */ count(*) from tab1 where id       4000          23          1 SPMTEST                        00axwq5w1q7x3     10438310272222376619
  = 100
 
 
