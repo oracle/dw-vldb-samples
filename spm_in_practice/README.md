@@ -1,8 +1,10 @@
 <h2>Utility Scripts for Using SPM in Practice</h2>
 
-The example.sql will demonstrate the scripts. Example output is shown in example.lst.
+The example.sql script will demonstrate the scripts in Wutil". 
 
-For the background, check out http://blogs.oracle.com/optimizer
+Example output is shown in example.lst.
+
+For background, check out http://blogs.oracle.com/optimizer
 
 DISCLAIMER:
    <br/>-- These scripts are provided for educational purposes only.
