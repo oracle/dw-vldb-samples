@@ -6,7 +6,7 @@ sure to use a test environment when you experiment with this for the first time.
 
 Example output is shown in example.lst. 
 
-For background, check out http://blogs.oracle.com/optimizer
+For background, check out https://blogs.oracle.com/optimizer/entry/how_to_use_sql_plan
 
 DISCLAIMER:
    <br/>-- These scripts are provided for educational purposes only.
