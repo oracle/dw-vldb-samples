@@ -1,3 +1,4 @@
+
 This is a top level repository for code examples related to Data Warehousing and Very Large Databases.
 
 There are examples and scripts relating to the Oracle Database and, in particular, the Oracle Optimizer. 
