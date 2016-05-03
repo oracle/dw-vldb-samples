@@ -6,4 +6,4 @@ The examples are generally self-contained, each wthin a directory containing all
 
 Many of the scripts are referenced from the Oracle Optimizer Blog, here: https://blogs.oracle.com/optimizer
 
-
+To contribute, see <a href="https://github.com/oracle/dw-vldb/blob/master/CONTRIBUTING.md">here.</a>
