@@ -2,7 +2,7 @@ Get a detailed list of database parameters and fix controls affected by optimize
 
 The script should be run on a test instance and it requires access to SYS.X$... tables.
 
-If the database has any Optimizer database parameters set already, then this can mask differences reported by the script.
+If the database has any Optimizer database parameters explicitly set, then this can mask differences reported by this script.
 
 The script will create some tables and drop them on completion, so you will be prompted for the name of schema where it is safe to do this.
 
