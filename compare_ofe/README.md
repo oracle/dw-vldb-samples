@@ -10,4 +10,4 @@ Usage:
 <br>1) Use SQLPLUS to connect to an account with access to SYS.X$ tables (usually SYS)
 <br>2) @ofe
 
-<a hred="http://blogs.oracle.com/optimizer">See Optimizer blog for more details.</a>
+<a href="http://blogs.oracle.com/optimizer">See Optimizer blog for more details.</a>
