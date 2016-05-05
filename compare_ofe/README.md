@@ -9,6 +9,7 @@ The script will create some tables and drop them on completion, so you will be p
 Usage:
 
 1) Connect to an account with access to SYS.X$ tables (usually SYS)
+
 2) SQL> @ofe
 
 <a hred="http://blogs.oracle.com/optimizer">See Optimizer blog for more details.</a>
