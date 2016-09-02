@@ -6,7 +6,7 @@ You need to be aware of changes to optimizer statistics and metadata so that you
 
 You may need to:
 
-*  Understand exacly what histgrams and extended column group statistics are present in the database. Some may have been created automatically and (for databases that hosts comlpex or multiple applications) there can be a variety of stratgies in use to maintain these entities.
+*  Understand exactly what histograms and extended column group statistics are present in the database. Some may have been created automatically and (for databases that host complex and/or multiple applications) there can be a variety of strategies in use to maintain these entities.
 *  Copy statistics from one database environment to another. For example, from pre-production to production. Even if these two environments have different data, it may be deemed beneficial to use the same histograms and column group statistics in production to those found to be useful in pre-production.
 *  Copy histogram definitions from one database to another (or from one schema to another) so that you have a consistent set of statistics.
 *  Copy extended statistic definitions from one database to another (or from one schema to another) so that you have a consistent set of statistics.
