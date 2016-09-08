@@ -4,7 +4,7 @@ If you have a pre-upgrade database or a test database and you want to duplicate 
 
 ### copy_hist.sql
 
-This scipt queries a schema to discover what histograms are present. It generates a set of DBMS_STATS.SET_TABLE_PREFS commands to match these histograms so you can explicitly define an equivalent set of histograms on another database. Like this:
+This script queries a schema to discover what histograms are present. It generates a set of DBMS_STATS.SET_TABLE_PREFS commands to match these histograms so you can explicitly define an equivalent set of histograms on another database. Like this:
 
 ```sql
 exec dbms_stats.set_table_prefs('HR','REGIONS','METHOD_OPT','FOR ALL COLUMNS SIZE 1, FOR COLUMNS REGION_NAME SIZE 254')
