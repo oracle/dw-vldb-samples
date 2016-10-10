@@ -18,7 +18,7 @@ declare
      where owner = upper('&schema')
      order by creator,table_name,extension_name;
 begin
-  dbms_output.put_line('var r NUMBER');
+  dbms_output.put_line('var r VARCHAR2');
   for c in extlist
   loop
     dbms_output.put('exec :r := dbms_stats.create_extended_stats('''||c.owner||''','''||c.table_name||''','''||c.extension||''')');
