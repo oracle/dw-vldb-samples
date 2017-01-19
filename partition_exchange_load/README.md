@@ -10,7 +10,7 @@ This script shows how partition exchange load interacts with incremental statist
 
 ### [copy_for_exchange.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/copy_for_exchange.sql)
 
-This script copies extended statistics and histograms from a main partitioned table to a load table, ensuring that they are consistent.
+This script demonstrates how you can copy extended statistics and histograms from a partitioned application table to a table you will be exchanging with a partition. 
 
 ### [check_hist.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/check_hist.sql)
 
