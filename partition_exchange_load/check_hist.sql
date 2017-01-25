@@ -1,5 +1,5 @@
 PROMPT ======================================================================================
-PROMPT Check histograms for all partitions
+PROMPT Check histograms for all (sub)partitions
 PROMPT ======================================================================================
 set serveroutput on
 set verify off
@@ -15,21 +15,11 @@ column subpartition_name format a40
 accept ptable prompt 'Enter the name of the partitioned table: '
 
 prompt
-prompt Number of histogram columns at table level
-prompt
-select count(*) num_table_histogram_cols
-from  user_tab_col_statistics
-where histogram is not null
-and   histogram != 'NONE'
-and   table_name = upper('&ptable');
-
-prompt
 prompt Table-level histograms:
 prompt
 select column_name 
 from  user_tab_col_statistics
-where histogram is not null
-and   histogram != 'NONE'
+where histogram != 'NONE'
 and   table_name = upper('&ptable')
 order by column_name;
 
@@ -39,9 +29,8 @@ prompt
 break on partition_name
 select partition_name,column_name
 from  user_part_col_statistics
-where histogram is not null
-and   histogram != 'NONE'
-and   table_name = upper('SPART')
+where histogram != 'NONE'
+and   table_name = upper('&ptable')
 and   column_name not in (select column_name
                           from  user_tab_col_statistics
                           where histogram is not null
@@ -56,9 +45,8 @@ prompt
 break on subpartition_name
 select subpartition_name,column_name
 from  user_subpart_col_statistics  
-where histogram is not null  
-and   histogram != 'NONE' 
-and   table_name = upper('SPART')
+where histogram != 'NONE' 
+and   table_name = upper('&ptable')
 and   column_name not in (select column_name  
                           from  user_tab_col_statistics
                           where histogram is not null 
@@ -73,9 +61,8 @@ prompt
 break on partition_name
 select partition_name, column_name
 from  user_part_col_statistics
-where (histogram is null or
-       histogram = 'NONE')
-and   table_name = upper('SPART')
+where histogram = 'NONE'
+and   table_name = upper('&ptable')
 and   column_name in (select column_name
                       from  user_tab_col_statistics
                       where histogram is not null
@@ -90,9 +77,8 @@ prompt
 break on subpartition_name
 select subpartition_name, column_name
 from  user_subpart_col_statistics
-where (histogram is null or
-       histogram = 'NONE')
-and   table_name = upper('SPART')
+where histogram = 'NONE'
+and   table_name = upper('&ptable')
 and   column_name in (select column_name
                       from  user_tab_col_statistics
                       where histogram is not null
@@ -100,6 +86,3 @@ and   column_name in (select column_name
                       and   table_name = upper('&ptable'))
 order by subpartition_name,column_name;
 clear breaks
-
-
-

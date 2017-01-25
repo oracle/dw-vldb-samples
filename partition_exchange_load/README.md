@@ -8,13 +8,13 @@ https://blogs.oracle.com/optimizer/entry/efficient_statistics_maintenance_for_pa
 
 This script shows how partition exchange load interacts with incremental statistics for a subpartitioned main table.
 
-### [copy_for_exchange.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/copy_for_exchange.sql)
+### [copy_for_exchange.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/list_s.sql)
 
-This script demonstrates how you can copy extended statistics and histograms from a partitioned application table to a table you will be exchanging with a partition. 
+This script lists extended statistics and histograms for a paritioned table.
 
 ### [check_hist.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/check_hist.sql)
 
-This script checks that histograms are consistent in a partitioned table.
+This script compares histograms at the table level with histograms for each (sub)partition. This is not a problem and not uncommon if histograms are created automatically (using 'FOR ALL COLUMNS SIZE AUTO'). Nevertheless, it's useful to be aware of this if you have been managing histograms mnd partition statistics manually. It might not have been your intention.
 
 ### Note
 
