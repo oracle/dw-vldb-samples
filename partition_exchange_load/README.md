@@ -8,7 +8,7 @@ https://blogs.oracle.com/optimizer/entry/efficient_statistics_maintenance_for_pa
 
 This script shows how partition exchange load interacts with incremental statistics for a subpartitioned main table.
 
-### [copy_for_exchange.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/list_s.sql)
+### [list_s.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/list_s.sql)
 
 This script lists extended statistics and histograms for a paritioned table.
 
