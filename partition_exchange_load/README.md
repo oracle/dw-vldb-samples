@@ -1,4 +1,3 @@
-
 # Partition Exchange Loading
 
 These scripts are to support Part 2 of a 3-part blog post on partition echange loading. Part 1 is here:
