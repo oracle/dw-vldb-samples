@@ -4,7 +4,7 @@ These scripts are to support Part 2 of a 3-part blog post on partition echange l
 
 https://blogs.oracle.com/optimizer/entry/efficient_statistics_maintenance_for_partitioned
 
-They are promarily designed with Oracle Database 12c in mind but they will largely work in Oracle Database 11g except that the steps to pre-create synopses will fail and the post-exchange stats gathering for the new partition cannot be avoided. 
+They are primarily designed with Oracle Database 12c in mind but they will largely work in Oracle Database 11g - except that the steps to pre-create synopses will fail and the post-exchange stats gathering for the new partition cannot be avoided. 
 
 The example.sql will 
 
