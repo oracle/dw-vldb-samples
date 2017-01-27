@@ -6,8 +6,6 @@ https://blogs.oracle.com/optimizer/entry/efficient_statistics_maintenance_for_pa
 
 They are primarily designed with Oracle Database 12c in mind but they will largely work in Oracle Database 11g - except that the steps to pre-create synopses will fail and the post-exchange stats gathering for the new partition cannot be avoided. 
 
-The example.sql will 
-
 ### [example.sql](https://github.com/oracle/dw-vldb/tree/master/partition_exchange_load/example.sql)
 
 This script shows how partition exchange load interacts with incremental statistics for a subpartitioned main table.
